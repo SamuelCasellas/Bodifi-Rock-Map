@@ -31,12 +31,16 @@ require([
 
     const popupPark = {
         "title": "Parks",
-        "content": "<b>Park name:</b> {Park_Name}<br><b>Address:</b> {Directions}<br>"
+        "content": "<b>Park name:</b> {Park_Name}<br>\
+        <b>Address:</b> {Directions}<br>\
+        <b>Accessories:</b> {Accessories}<br>\
+        <b>Comments:</b> {Comments}<br>"
+        
     };
 
     const parks = new FeatureLayer({
         url: IDAHO_PARKS_FEATURE_LAYER_URL,
-        outFields: ["Park_Name", "Directions"],
+        outFields: ["Park_Name", "Directions", "Accessories", "Comments"],
         popupTemplate: popupPark
     });
 

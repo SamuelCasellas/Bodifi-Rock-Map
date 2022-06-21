@@ -15,13 +15,6 @@
           height: 100%;
           width: 100%;
         }
-        #legend-and-settings {
-          padding: 0;
-          margin: 0;
-          height: 20%;
-          width: 20%;
-          display: none;
-        }
     </style>
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.23/esri/themes/light/main.css">
@@ -31,28 +24,13 @@
 <body>
 
     <!-- Map container -->
-    <button id="open-display-settings">Display Settings</button>
     <div id="viewDiv">
-        <div id="legend-and-settings">
-            <input type="button" id="altitude" name="toggle-alt" value="Altitude" />
+        <div id="legend">
+
+
         </div>
 
     </div>
-
-
-    <!-- Open and close the legend -->
-    <script>
-        const displaySettingsButton = document.getElementById("open-display-settings");
-        const legendSideView = document.getElementById("legend-and-settings");
-        
-        displaySettingsButton.addEventListener("click", function() {
-            if (legendSideView.style.display == "none")
-              legendSideView.style.display = "block";
-            else
-              legendSideView.style.display = "none";
-
-        });
-    </script>
 
 </body>
 </html>
