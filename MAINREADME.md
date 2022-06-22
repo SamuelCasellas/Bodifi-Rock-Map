@@ -1,7 +1,7 @@
 # Important dates
 
-3 mini rocks start date: June 29, 2022
-Final rock start date: July 11, 2022 
+3 mini rocks start date: Wednesday, June 29, 2022 (W11)
+Final rock start date: Monday, July 11, 2022 (W13)
 
 # Symbols on the shirt
 NW: Triangle ∆
@@ -65,4 +65,4 @@ Note: If I cannot find a way to show the different filters on my own ArcGIS app,
 - With the database: store custom notes about each location to store progress in the hunt
 
 # How to utilize hints given at 8AM (Facebook and Instagram will also have the hints)
-- Run synonyms of key words against different locations' facts
+- Run synonyms of key words against different locations' facts *

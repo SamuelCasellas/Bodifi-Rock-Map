@@ -4,16 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Idaho Falls GIS Map</title>
+    <title>Bodifi Rock 2022</title>
 
     <style>
-        html,
+        /* html,
         body,
         #viewDiv {
           padding: 0;
           margin: 0;
           height: 100%;
           width: 100%;
+        } */
+        html, body {     
+          padding: 0;
+          margin: 0;
+          height: 100%;
+          width: 100%;
+        }
+        #grid {
+          padding: 0;
+          margin: 0;
+          height: 100%;
+          width: 100%;
+          display: grid;
+          grid-template-columns: 5% 1fr 20%;
+          grid-template-rows: 5% 1fr 80%;
+        }
+        #viewDiv {
+          grid-column: 1/4;
+          grid-row: 1/4;
+        }
+        #open-display-settings {
+          z-index: 1; /**/
+          grid-column: 1/2;
+          grid-row: 1/2;
+        }
+        #legend-and-settings {
+          z-index: 1; /**/
+          grid-column: 3/4;
+          grid-row: 1/2;
+          display: none;
+          padding: 0;
+          margin: 0;
+          height: 20%;
+          width: 20%;
         }
     </style>
 
@@ -24,13 +58,27 @@
 <body>
 
     <!-- Map container -->
-    <div id="viewDiv">
-        <div id="legend">
-
-
-        </div>
-
+    <div id="grid">
+      <button id="open-display-settings">Display Settings</button>
+      <div id="viewDiv"></div>
+      <div id="legend-and-settings">
+          <input type="button" id="altitude" name="toggle-alt" value="Show altitude" />
+      </div>
     </div>
+        
+
+    <!-- Open and close the legend -->
+    <script>
+        const displaySettingsButton = document.getElementById("open-display-settings");
+        const legendSideView = document.getElementById("legend-and-settings");
+        
+        displaySettingsButton.addEventListener("click", function() {
+            if (legendSideView.style.display == "none") {
+              legendSideView.style.display = "block";
+            } else
+                legendSideView.style.display = "none";
+        });
+    </script>
 
 </body>
 </html>
