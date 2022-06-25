@@ -15,10 +15,9 @@ Middle of compass: an upside v with a dot between the legs
 
 1. Places where the rock can actually be hiding:
     - Forests
-    - Parks
+    - ~~Parks~~
         - ArcGIS
             - https://chluyu7llsleoj1k.maps.arcgis.com/home/item.html?id=f092c20803a047cba81fbf1e30eff0b5
-            - 
         - General
             - Idaho Falls https://www.idahofallsidaho.gov/Facilities?clear=False
     - Any public spaces, really (they hid it at a library once!)
@@ -33,7 +32,7 @@ Middle of compass: an upside v with a dot between the legs
     - historical
     - events currently being held (like a parade where theres food)
     - Venues
-    - Altitude (which parts are hilly)
+    - ~~Altitude (which parts are hilly)~~
 
 4. (The rock WONT be hiding)
     - Farms
@@ -48,7 +47,7 @@ Note: If I cannot find a way to show the different filters on my own ArcGIS app,
 - Implement ArcGIS to pinpoint all the parks/forests (1)
 - ArcGIS for any sort of public spaces (1)
 - ArcGIS for any nearby landmarks: Bodies of water, museums, churches, restaurants. (2)
-- ArcGIS for altitude (3d)
+- ~~ArcGIS for altitude (3d)~~
 - ArcGIS for  places that are private property: they will not hide the rock there. (4)
 
 # How it will fit into the modules:
@@ -58,7 +57,7 @@ Note: If I cannot find a way to show the different filters on my own ArcGIS app,
 
 # Researching program (simplicity is key)
 - Have all the feature layers implemented with appropriate popups. 
-- Use a database (Module 5 stretch challenge) that will hold the facts about each location and display the results (like mod. 2)
+- ~~Use a database (Module 5 stretch challenge) that will hold the facts about each location and display the results (like mod. 2) EASY: Already implemented in ArcGIS~~
 
 # Key components for the on-the-search program
 - Must be able to access it as a website (so use glitch)
