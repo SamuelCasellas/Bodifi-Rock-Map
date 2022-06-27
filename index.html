@@ -21,6 +21,12 @@
           height: 100%;
           width: 100%;
         }
+
+        input {
+          margin-top: 25px;
+          border: 5px solid forestgreen;
+        }
+
         #grid {
           padding: 0;
           margin: 0;
@@ -62,10 +68,18 @@
       <button id="open-display-settings">Display Settings</button>
       <div id="viewDiv"></div>
       <div id="legend-and-settings">
-          <input type="button" id="altitude" name="toggle-alt" value="Show altitude" />
-          <input type="button" id="boundary" name="toggle-alt" value="Show game boundary" />
+          <input type="button" id="altitude" name="toggle-alt" value="Show altitude: Off" />
+          <input type="button" id="boundary" name="toggle-boundry" value="Show game boundary: On" />
+          <input type="button" id="parks" name="toggle-parks" value="Show park points: On" />
+          <input type="button" id="public-land" name="toggle-public-lands" value="Show public lands: On" />
+          <input type="button" id="campus" name="toggle-campus" value="Show Idaho Campus: Off" />
+
       </div>
     </div>
+
+    <script>
+
+    </script>
         
 
     <!-- Open and close the legend -->
@@ -74,10 +88,10 @@
         const legendSideView = document.getElementById("legend-and-settings");
         
         displaySettingsButton.addEventListener("click", function() {
-            if (legendSideView.style.display == "none") {
+            if (legendSideView.style.display == "none") 
               legendSideView.style.display = "block";
-            } else
-                legendSideView.style.display = "none";
+            else
+              legendSideView.style.display = "none";
         });
     </script>
 
