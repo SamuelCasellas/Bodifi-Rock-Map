@@ -6,8 +6,9 @@ const GAME_BOUNDRY_FEATURE_LAYER_URL = "https://services8.arcgis.com/YY0zev9RpFX
 const IDAHO_PARKS_FEATURE_LAYER_URL = "https://services8.arcgis.com/YY0zev9RpFX809lW/arcgis/rest/services/Parks_in_IF/FeatureServer/0";
 const PUBLIC_LAND_URL = "https://services1.arcgis.com/Hp6G80Pky0om7QvQ/arcgis/rest/services/PAD_US/FeatureServer";
 const CAMPUS_MAP_URL = "https://services1.arcgis.com/z5tlnpYHokW9isdE/arcgis/rest/services/IdahoFallsCurrentCampusMap/FeatureServer/0";
+const HISTORICAL_FEATURE_LAYER_URL = "https://gis.itd.idaho.gov/arcgisprod/rest/services/ArcGISOnline/IdahoTransportationLayersForOpenData/MapServer/43";
 
-
+const MISCELLANEOUS_FEATURE_LAYER_URL = "https://services8.arcgis.com/YY0zev9RpFX809lW/arcgis/rest/services/Miscellaneous_Features/FeatureServer/0";
 // const southWest = [-112.182817, 43.304475];
 // const northEast = [-111.59577, 44.071117];
 
@@ -44,27 +45,28 @@ require([
     const altitude = new ImageryLayer({
         portalItem: {
             id: "a1ba14d09df14f42ad6ca3c4bcebf3b4"
-        }
+        },
+        opacity: 0.7,
+        visible: false
     });
 
-    altitude.opacity = 0.7;
     map.add(altitude, 0);
-    altitude.visible = false;
+
 
 
     // Add Game Boundaries
     const gameBoundarySketch = new FeatureLayer({
-        url: GAME_BOUNDRY_FEATURE_LAYER_URL
+        url: GAME_BOUNDRY_FEATURE_LAYER_URL,
+        opacity: 0.15
     });
-    gameBoundarySketch.opacity = 0.15;
     map.add(gameBoundarySketch, 1);
 
     // Configure parks
     const popupPark = {
         "title": "Parks",
-        "content": "<b>Park name:</b> {Park_Name}<br>\
-        <b>Address:</b> {Directions}<br>\
-        <b>Accessories:</b> {Accessories}<br>\
+        "content": "<b>Park name:</b> {Park_Name}<br></br>\
+        <b>Address:</b> {Directions}<br></br>\
+        <b>Accessories:</b> {Accessories}<br></br>\
         <b>Comments:</b> {Comments}<br>"
         
     };
@@ -74,6 +76,19 @@ require([
         outFields: ["Park_Name",  "Directions", "Accessories", "Comments"],
         popupTemplate: popupPark
     });
+
+    parks.renderer = {
+        type: "simple",  // autocasts as new SimpleRenderer()
+        symbol: {
+          type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
+          size: 6,
+          color: "green",
+          outline: {  // autocasts as new SimpleLineSymbol()
+            width: 0.5,
+            color: "dark-green"
+          }
+        }
+      };
     
     map.add(parks, 2);
 
@@ -128,51 +143,133 @@ require([
             "Shape__Area",
             "Shape__Length",
         ],
-        popupTemplate: popupPublicSpace
+        popupTemplate: popupPublicSpace,
+        opacity: 0.5
     });
 
-    publicSpaces.opacity = 0.5;
     map.add(publicSpaces, 2);
     
 
     // Add Campus
 
     const campus = new FeatureLayer({
-        url: CAMPUS_MAP_URL
+        url: CAMPUS_MAP_URL,
+        visible: false
     });
 
-    campus.visible = false;
     map.add(campus, 2);
+
+    // Add historical layer
+
+    const historicalPointPopup = {
+        "title": "Historical Facts",
+        "content": "<b>Title:</b> {Title}<br></br>\
+        <b>Location:</b> {Location}<br></br>\
+        <b>Remarks:</b> {Remarks}<br></br>\
+        <b>Text on Sign:</b> {TextonSign}<br></br>\
+        <b>Photo of Sign:</b> <a href=\"{PhotoURL}\">Photo</a><br>"
+    }
+
+    const historicalPoints = new FeatureLayer({
+        url: HISTORICAL_FEATURE_LAYER_URL,
+        outFields: [
+            "Title",
+            "Location",
+            "Remarks",
+            "TextOnSign",
+            "PhotoURL",
+        ],
+        popupTemplate: historicalPointPopup,
+        visible: false
+    });
+
+    historicalPoints.renderer = {
+        type: "simple",  // autocasts as new SimpleRenderer()
+        symbol: {
+          type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
+          size: 6,
+          color: "brown",
+          outline: {  // autocasts as new SimpleLineSymbol()
+            width: 0.5,
+            color: "white"
+          }
+        }
+      };
+
+    map.add(historicalPoints, 2);
+
+    // Miscellaneous Features
+
+    const miscellaneousPopup = {
+        "title": "Miscellaneous Feature",
+        "content": "<b>Name:</b> {Name}<br></br>\
+        <b>Address:</b> {Address}<br></br>\
+        <b>Comments:</b> {Comments}<br></br>"
+    }
+
+    const miscellaneous = new FeatureLayer ({
+        url: MISCELLANEOUS_FEATURE_LAYER_URL,
+        outFields: ["Name", "Address", "Comments"],
+        popupTemplate: miscellaneousPopup,
+        visible: false
+    });
+
+    miscellaneous.renderer = {
+        type: "simple",  // autocasts as new SimpleRenderer()
+        symbol: {
+          type: "simple-marker",  // autocasts as new SimpleMarkerSymbol()
+          size: 6,
+          color: "black",
+          outline: {  // autocasts as new SimpleLineSymbol()
+            width: 0.5,
+            color: "white"
+          }
+        }
+      };
+
+    map.add(miscellaneous, 2);
 
     // Toggle map features
     const altitudeButton = document.getElementById("altitude");
     altitudeButton.addEventListener("click", function() {
         altitude.visible = !(altitude.visible);
-        altitudeButton.value = "Show altitude: " + tellOnOrOff(altitude);
+        altitudeButton.value = "Show altitude ⛰: " + tellOnOrOff(altitude);
     });
 
     const boundaryButton = document.getElementById("boundary");
     boundaryButton.addEventListener("click", function() {
       gameBoundarySketch.visible = !(gameBoundarySketch.visible);
-      boundaryButton.value = "Show game boundary: " + tellOnOrOff(gameBoundarySketch);
+      boundaryButton.value = "Show game boundary 🟦: " + tellOnOrOff(gameBoundarySketch);
     });
 
     const parksButton = document.getElementById("parks");
     parksButton.addEventListener("click", function() {
       parks.visible = !(parks.visible);
-      parksButton.value = "Show park points: " + tellOnOrOff(parks);
+      parksButton.value = "Show park points 🏞️: " + tellOnOrOff(parks);
     });
 
     const publicSpacesButton = document.getElementById("public-land");
     publicSpacesButton.addEventListener("click", function() {
       publicSpaces.visible = !(publicSpaces.visible);
-      publicSpacesButton.value = "Show public lands: " + tellOnOrOff(publicSpaces);
+      publicSpacesButton.value = "Show public lands 🚶: " + tellOnOrOff(publicSpaces);
     });
 
     const campusButton = document.getElementById("campus");
     campusButton.addEventListener("click", function() {
       campus.visible = !(campus.visible);
-      campusButton.value = "Show Idaho Campus: " + tellOnOrOff(campus);
+      campusButton.value = "Show Idaho Campus 🧑‍🎓: " + tellOnOrOff(campus);
+    });
+
+    const historicButton = document.getElementById("history");
+    historicButton.addEventListener("click", function() {
+      historicalPoints.visible = !(historicalPoints.visible);
+      historicButton.value = "Show Historical Points 📖: " + tellOnOrOff(historicalPoints);
+    });
+
+    const otherButton = document.getElementById("other");
+    otherButton.addEventListener("click", function() {
+      miscellaneous.visible = !(miscellaneous.visible);
+      otherButton.value = "Show Bodifi, Musuems locations: " + tellOnOrOff(miscellaneous);
     });
 
     function tellOnOrOff(feature) {

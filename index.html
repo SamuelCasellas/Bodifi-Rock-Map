@@ -23,7 +23,7 @@
         }
 
         input {
-          margin-top: 25px;
+          margin-top: 15px;
           border: 5px solid forestgreen;
         }
 
@@ -33,8 +33,8 @@
           height: 100%;
           width: 100%;
           display: grid;
-          grid-template-columns: 5% 1fr 20%;
-          grid-template-rows: 5% 1fr 80%;
+          grid-template-columns: 20% 1fr 60%;
+          grid-template-rows: 15% 1fr 75%;
         }
         #viewDiv {
           grid-column: 1/4;
@@ -43,7 +43,7 @@
         #open-display-settings {
           z-index: 1; /**/
           grid-column: 1/2;
-          grid-row: 1/2;
+          grid-row: 2/3;
         }
         #legend-and-settings {
           z-index: 1; /**/
@@ -60,27 +60,44 @@
     <link rel="stylesheet" href="https://js.arcgis.com/4.23/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.23/"></script>
     <script src="mapSetup.js" type="module"></script>
-</head>
-<body>
+  </head>
+  <body>
+  <!-- <script src="https://unpkg.com/@esri/arcgis-rest-request@4.0.0/dist/bundled/request.umd.js"></script>
+  <script src="https://unpkg.com/@esri/arcgis-rest-feature-service@4.0.0/dist/bundled/feature-service.umd.js"></script>
+  <script>
+
+  const authentication = arcgisRest.ApiKeyManager.fromKey("AAPK321d61bd8cb64adcaf742d6cdb358ccdCXO2JrGUFiZl0PQvgiRgB1wGhZCRKBqE5xirtn9bSIMdlfdsRnmH33XiIBVB2JfN");
+
+  arcgisRest
+    .queryFeatures({
+      url: IDAHO_PARKS_FEATURE_LAYER_URL,
+  //   where: "UseType = 'Residential'",
+      resultRecordCount: 1,
+      authentication
+    })
+    .then((response) => {
+      console.log(response.features);
+  //      document.getElementById("result").textContent = JSON.stringify(response.features, null, 2);
+    });
+  </script> -->
+  
+
 
     <!-- Map container -->
     <div id="grid">
       <button id="open-display-settings">Display Settings</button>
       <div id="viewDiv"></div>
       <div id="legend-and-settings">
-          <input type="button" id="altitude" name="toggle-alt" value="Show altitude: Off" />
-          <input type="button" id="boundary" name="toggle-boundry" value="Show game boundary: On" />
-          <input type="button" id="parks" name="toggle-parks" value="Show park points: On" />
-          <input type="button" id="public-land" name="toggle-public-lands" value="Show public lands: On" />
-          <input type="button" id="campus" name="toggle-campus" value="Show Idaho Campus: Off" />
+        <input type="button" id="altitude" name="toggle-alt" value="Show altitude ⛰: Off" />
+        <input type="button" id="boundary" name="toggle-boundry" value="Show game boundary 🟦: On" />
+        <input type="button" id="parks" name="toggle-parks" value="Show park points 🏞️: On" />
+        <input type="button" id="public-land" name="toggle-public-lands" value="Show public lands 🚶: On" />
+        <input type="button" id="campus" name="toggle-campus" value="Show Idaho Campus 🧑‍🎓: Off" />
+        <input type="button" id="history" name="toggle-history" value="Show Historical Points 📖: Off" />
+        <input type="button" id="other" name="toggle-other" value="Show Bodifi, Musuems locations: Off" />
 
       </div>
     </div>
-
-    <script>
-
-    </script>
-        
 
     <!-- Open and close the legend -->
     <script>
