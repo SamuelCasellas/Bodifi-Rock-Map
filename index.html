@@ -59,7 +59,7 @@
 
     <link rel="stylesheet" href="https://js.arcgis.com/4.23/esri/themes/light/main.css">
     <script src="https://js.arcgis.com/4.23/"></script>
-    <script src="mapSetup.js" type="module"></script>
+    <script src="mapSetup.js"></script>
   </head>
   <body>
   <!-- <script src="https://unpkg.com/@esri/arcgis-rest-request@4.0.0/dist/bundled/request.umd.js"></script>
@@ -88,13 +88,14 @@
       <button id="open-display-settings">Display Settings</button>
       <div id="viewDiv"></div>
       <div id="legend-and-settings">
-        <input type="button" id="altitude" name="toggle-alt" value="Show altitude ⛰: Off" />
-        <input type="button" id="boundary" name="toggle-boundry" value="Show game boundary 🟦: On" />
-        <input type="button" id="parks" name="toggle-parks" value="Show park points 🏞️: On" />
-        <input type="button" id="public-land" name="toggle-public-lands" value="Show public lands 🚶: On" />
+        <input type="button" id="altitude" name="toggle-alt" value="Show Altitude ⛰: Off" />
+        <input type="button" id="boundary" name="toggle-boundry" value="Show Game Boundary 🟦: On" />
+        <input type="button" id="parks" name="toggle-parks" value="Show Park Points 🏞️: On" />
+        <input type="button" id="public-land" name="toggle-public-lands" value="Show Public Lands 🚶: On" />
         <input type="button" id="campus" name="toggle-campus" value="Show Idaho Campus 🧑‍🎓: Off" />
         <input type="button" id="history" name="toggle-history" value="Show Historical Points 📖: Off" />
-        <input type="button" id="other" name="toggle-other" value="Show Bodifi, Musuems locations: Off" />
+        <input type="button" id="other" name="toggle-other" value="Show Bodifi, Musuems Locations 🎨🖼🦖: Off" />
+        <input type="button" id="geocaching" name="toggle-geocaching" value="Show Medium-sized Geocaches 📦: Off" />
 
       </div>
     </div>
@@ -105,10 +106,7 @@
         const legendSideView = document.getElementById("legend-and-settings");
         
         displaySettingsButton.addEventListener("click", function() {
-            if (legendSideView.style.display == "none") 
-              legendSideView.style.display = "block";
-            else
-              legendSideView.style.display = "none";
+          legendSideView.style.display === "none" ? legendSideView.style.display = "block" : legendSideView.style.display = "none";
         });
     </script>
 

@@ -9,12 +9,12 @@ NE: hexagon with a dot in the middle
 ES: Three vetrical lines and one horizontal line
 WS: * with 12 dots surrounding it
 
-Middle of compass: an upside v with a dot between the legs
+Middle of compass: ^ with a dot between the legs
 
 # Things that will be helpful to know for the rock:
 
-1. Places where the rock can actually be hiding:
-    - Forests
+1. ~~Places where the rock can actually be hiding:~~
+    - ~~Forests~~
     - ~~Parks~~
         - ArcGIS
             - https://chluyu7llsleoj1k.maps.arcgis.com/home/item.html?id=f092c20803a047cba81fbf1e30eff0b5
@@ -28,12 +28,12 @@ Middle of compass: an upside v with a dot between the legs
     - Churches
     - Restaurants?
 
-3. Facts about the general area or hiding spot
+3. ~~Facts about the general area or hiding spot~~
     - ~~historical~~
     - ~~events currently being held (like a parade where theres food)~~ (THIS WILL NEED TO BE SEARCHED SEPARATELY)
     - ~~Altitude (which parts are hilly)~~
 
-4. (The rock WONT be hiding)
+4. (The rock WONT be hiding JUST KEEP IN MIND, NOTHING TO DO HERE)
     - Farms (Just keep in mind)
     - Homes (Just keep in mind)
     - Any Private Property (The Bodifi Rock will not be hidden within 50ft of any commercial building or residence.)
@@ -45,9 +45,8 @@ Note: If I cannot find a way to show the different filters on my own ArcGIS app,
 
 - ~~Implement ArcGIS to pinpoint all the parks/forests (1)~~
 - ~~ArcGIS for any sort of public spaces (1)~~
-- ArcGIS for any nearby landmarks: Bodies of water, museums, churches, restaurants. (2)
+- ~~ArcGIS for any nearby landmarks: Bodies of water, museums, churches, restaurants. (2)~~
 - ~~ArcGIS for altitude (3d)~~
-- ArcGIS for  places that are private property: they will not hide the rock there. (4)
 
 # How it will fit into the modules:
 4: ArcGIS (For displaying all of the feature layers as described above)
@@ -55,7 +54,7 @@ Note: If I cannot find a way to show the different filters on my own ArcGIS app,
 (I will then put it on glitch so we can use it on the run when finding the rock)
 
 # Researching program (simplicity is key)
-- Have all the feature layers implemented with appropriate popups. 
+- ~~Have all the feature layers implemented with appropriate popups.~~
 - ~~Use a database (Module 5 stretch challenge) that will hold the facts about each location and display the results (like mod. 2) EASY: Already implemented in ArcGIS~~
 
 # Key components for the on-the-search program

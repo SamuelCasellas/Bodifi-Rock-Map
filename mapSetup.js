@@ -9,8 +9,7 @@ const CAMPUS_MAP_URL = "https://services1.arcgis.com/z5tlnpYHokW9isdE/arcgis/res
 const HISTORICAL_FEATURE_LAYER_URL = "https://gis.itd.idaho.gov/arcgisprod/rest/services/ArcGISOnline/IdahoTransportationLayersForOpenData/MapServer/43";
 
 const MISCELLANEOUS_FEATURE_LAYER_URL = "https://services8.arcgis.com/YY0zev9RpFX809lW/arcgis/rest/services/Miscellaneous_Features/FeatureServer/0";
-// const southWest = [-112.182817, 43.304475];
-// const northEast = [-111.59577, 44.071117];
+const GEOCACHING_URL = "https://services8.arcgis.com/YY0zev9RpFX809lW/arcgis/rest/services/Geocaching_Hotspots/FeatureServer/0";
 
 // Rigby is the between Rexburg and Idaho so we will use that.
 const RIGBY_LONGITUDE = -111.909829694;
@@ -25,7 +24,7 @@ require([
     "esri/layers/FeatureLayer",
     "esri/layers/ImageryLayer"
     ], 
-    function (esriConfig, Map, MapView, FeatureLayer, ImageryLayer) {
+    function (esriConfig, Map, MapView, FeatureLayer, ImageryLayer, esriRequest) {
     // Basic config
     esriConfig.apiKey = API_KEY;
 
@@ -229,29 +228,37 @@ require([
 
     map.add(miscellaneous, 2);
 
+    // Geocaching hotspots
+    const geocaching = new FeatureLayer({
+        url: GEOCACHING_URL,
+        visible: false
+    })
+
+    map.add(geocaching, 2);
+
     // Toggle map features
     const altitudeButton = document.getElementById("altitude");
     altitudeButton.addEventListener("click", function() {
         altitude.visible = !(altitude.visible);
-        altitudeButton.value = "Show altitude ⛰: " + tellOnOrOff(altitude);
+        altitudeButton.value = "Show Altitude ⛰: " + tellOnOrOff(altitude);
     });
 
     const boundaryButton = document.getElementById("boundary");
     boundaryButton.addEventListener("click", function() {
       gameBoundarySketch.visible = !(gameBoundarySketch.visible);
-      boundaryButton.value = "Show game boundary 🟦: " + tellOnOrOff(gameBoundarySketch);
+      boundaryButton.value = "Show Game Boundary 🟦: " + tellOnOrOff(gameBoundarySketch);
     });
 
     const parksButton = document.getElementById("parks");
     parksButton.addEventListener("click", function() {
       parks.visible = !(parks.visible);
-      parksButton.value = "Show park points 🏞️: " + tellOnOrOff(parks);
+      parksButton.value = "Show Park Points 🏞️: " + tellOnOrOff(parks);
     });
 
     const publicSpacesButton = document.getElementById("public-land");
     publicSpacesButton.addEventListener("click", function() {
       publicSpaces.visible = !(publicSpaces.visible);
-      publicSpacesButton.value = "Show public lands 🚶: " + tellOnOrOff(publicSpaces);
+      publicSpacesButton.value = "Show Public Lands 🚶: " + tellOnOrOff(publicSpaces);
     });
 
     const campusButton = document.getElementById("campus");
@@ -269,14 +276,17 @@ require([
     const otherButton = document.getElementById("other");
     otherButton.addEventListener("click", function() {
       miscellaneous.visible = !(miscellaneous.visible);
-      otherButton.value = "Show Bodifi, Musuems locations: " + tellOnOrOff(miscellaneous);
+      otherButton.value = "Show Bodifi, Musuems Locations 🎨🖼🦖: " + tellOnOrOff(miscellaneous);
+    });
+    
+    const geoButton = document.getElementById("geocaching");
+    geoButton.addEventListener("click", function() {
+      geocaching.visible = !(geocaching.visible);
+      geoButton.value = "Show Medium-sized Geocaches 📦: " + tellOnOrOff(geocaching);
     });
 
     function tellOnOrOff(feature) {
-        if (feature.visible)
-          return "On"
-        else
-          return "Off"
+        return feature.visible === true ? "On" : "Off";
     }
 
 });
